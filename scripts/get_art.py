@@ -15,6 +15,7 @@ import argparse
 import requests
 import os.path as osp
 import random # for generating random number
+import webbrowser # for launching photo in web browser
 
 script_dir = osp.dirname(__file__)
 
@@ -42,7 +43,9 @@ def main():
     art_url = get_posts(args.subreddit, args.filter, args.sample_size, args.username, random_number)
     print(art_url)
 
-    # write photo to data directory
-    # wget? TODO
+    # open photo in default web browser
+    # TODO caching, if you want to save the photos
+    print(f'launching art webbrowser: {webbrowser.open(art_url, new=1)}')
+
 if __name__ == '__main__':
     main()
